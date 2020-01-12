@@ -19,17 +19,20 @@ class GamesController {
     }
 
     public async createGame (req: Request, res: Response): Promise<void> {
-        console.log(req.body);
         await pool.query('INSERT INTO games set ?', [req.body]);
         res.json({message: 'Game created'});
     }
 
-    public updateGame (req: Request, res: Response) {
-        res.json({text: 'Updating  the game ' + req.params.id + '...'});
+    public async updateGame (req: Request, res: Response) {
+        const id = Number(req.params.id);
+        pool.query(`UPDATE games set ? WHERE id = ${id}`, [req.body]);
+        res.json({message: 'Game updated'});
     }
 
-    public deleteGame (req: Request, res: Response) {
-        res.json({text: 'Deleting  the game ' + req.params.id + '...'});
+    public async deleteGame (req: Request, res: Response) {
+        const id = Number(req.params.id);
+        await pool.query(`DELETE FROM games WHERE  id =${id}`);
+        res.json({message: 'Game deleted'});
     }
 
 } 

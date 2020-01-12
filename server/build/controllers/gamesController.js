@@ -35,16 +35,23 @@ class GamesController {
     }
     createGame(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
             yield database_1.default.query('INSERT INTO games set ?', [req.body]);
             res.json({ message: 'Game created' });
         });
     }
     updateGame(req, res) {
-        res.json({ text: 'Updating  the game ' + req.params.id + '...' });
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = Number(req.params.id);
+            database_1.default.query(`UPDATE games set ? WHERE id = ${id}`, [req.body]);
+            res.json({ message: 'Game updated' });
+        });
     }
     deleteGame(req, res) {
-        res.json({ text: 'Deleting  the game ' + req.params.id + '...' });
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = Number(req.params.id);
+            yield database_1.default.query(`DELETE FROM games WHERE  id =${id}`);
+            res.json({ message: 'Game deleted' });
+        });
     }
 }
 const gamesController = new GamesController();

@@ -10,6 +10,5 @@ pool.getConnection((err, connection) => {
     if (err)
         throw err;
     connection.release();
-    console.log('DB is connected');
 });
 exports.default = pool;
