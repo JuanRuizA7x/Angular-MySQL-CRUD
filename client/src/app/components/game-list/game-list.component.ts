@@ -9,19 +9,19 @@ import { Game } from 'src/app/models/game';
 })
 export class GameListComponent implements OnInit {
 
-  games: Game[];
+  games: Game[] = [];
 
   constructor( private gamesService: GamesService ) {
-    this.getGames();
   }
 
   ngOnInit() {
+    this.getGames();
   }
 
   getGames() {
-    this.gamesService.getGames().subscribe( (games: Game[]) => {
-      this.games = games;
-    });
+    this.gamesService.getGames().subscribe(
+      (games: Game[]) => this.games = games,
+      (error: any) => console.error(error));
   }
 
 }
