@@ -15,7 +15,7 @@ const routes: Routes = [
     component: GameListComponent
   },
   {
-    path: 'games/add',
+    path: 'addGame',
     component: GameFormComponent
   },
   {
