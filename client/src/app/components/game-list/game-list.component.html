@@ -2,11 +2,11 @@
     <div class="card" *ngFor="let game of games">
         <img [src]="game.image" class="card-img-top" [alt]="game.title">
         <div class="card-body">
-            <h5 class="card-title">{{game.title}}</h5>
+            <h5 class="card-title text-center">{{game.title}}</h5>
             <br>
-            <p class="card-text">{{game.description}}</p>
-            <a href="" class="btn btn-info btn-block">EDIT GAME</a>
-            <button class="btn btn-danger btn-block">
+            <p class="card-text text-justify">{{game.description}}</p>
+            <button class="btn btn-info btn-block" (click)="updatGame(game.id)">EDIT GAME</button>
+            <button class="btn btn-danger btn-block" (click)="deleteGame(game.id)">
                 <i class="fas fa-trash-alt"></i>
             </button>
         </div>

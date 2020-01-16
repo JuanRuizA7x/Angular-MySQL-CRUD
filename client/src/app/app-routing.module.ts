@@ -19,6 +19,10 @@ const routes: Routes = [
     component: GameFormComponent
   },
   {
+    path: 'updateGame/:id',
+    component: GameFormComponent
+  },
+  {
     path: '**',
     redirectTo: '/games',
     pathMatch: 'full'

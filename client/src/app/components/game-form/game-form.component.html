@@ -1,4 +1,4 @@
-<div class="col-md-4 offset-md-4">
+<div class="col-md-4 offset-md-2">
     <div clss="card">
         <div class="card-body">
             <form>
@@ -9,12 +9,23 @@
                     <textarea name="description" [(ngModel)]="game.description" placeholder="Description" class="form-control" rows="2"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="url" name="image" [(ngModel)]="game.image" placeholder="Image" class="form-control">
+                    <input type="url" name="image" [(ngModel)]="game.image" placeholder="Image URL" class="form-control">
                 </div>
-                <button class="btn btn-success btn-block" (click)="saveNewGame()">
-                    Save
+                <button class="btn btn-success btn-block" (click)="update == false ? saveNewGame() : updateGame()">
+                    {{update == false ? 'Save' : 'Update'}}
                 </button>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img [src]="game.image == '' ? '/assets/no-image-icon.png' : game.image" class="card-img-top" [alt]="game.title">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{game.title == '' ? 'Game title' : game.title}}</h5>
+            <br>
+            <p class="card-text text-justify">{{game.description == '' ? 'Game description' : game.description}}</p>
         </div>
     </div>
 </div>
